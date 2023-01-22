@@ -21,5 +21,10 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('todolist/', include('todolist.urls')),
-    path('forum/', include('forum.urls'))
+    path('forum/', include('forum.urls')),
+    path('task_manager/', include('task_manager.urls')),
+
+
+
+
 ]

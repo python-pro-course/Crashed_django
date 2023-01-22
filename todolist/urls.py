@@ -4,4 +4,5 @@ from todolist.views import *
 
 urlpatterns = [
     path('', neponyatno_cho),
+    path('', ccylka),
 ]

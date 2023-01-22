@@ -1,0 +1,22 @@
+{% extends 'layout/base.html' %}
+{% block title %}^=_=^{% endblock %}
+{% block content %}
+  <div class="alert alert-info" role="alert">
+    <div class="container">
+      <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+
+          <input type="submit" class="alert alert-success" value="Создать">
+
+
+
+
+      </form>
+  </div>
+  </div>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Главная{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'add' %}">Создать задачу</a>
+        </li>
+        {% for category in categories %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'by_category_name' category.pk %}">{{ category.name }}</a>
+          </li>
+        {% endfor %}
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+{% block content %}
+
+<div class="alert alert-dark" role="alert">
+    <div class="alert alert-success" role="alert">
+
+        {% block category_name %}<h1>Все планы</h1>{% endblock %}
+
+    </div>
+    <h2> Список задач </h2>
+</div>
+<div class="container">
+    {% for task in tasks %}
+    <div>
+        <div class="alert alert-success" role="alert">
+            <h1>{{ task.title }}</h1>
+            <h4>{{ task.descript }}</h4>
+            <a class="btn btn-danger" href="{% url 'delete_task' task.id %}">Удалить</a>
+            <a class="btn btn-dark" href="{% url 'edit_task' task.id %}">Редактировать</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+
+
+
+
+</body>
+</html>
